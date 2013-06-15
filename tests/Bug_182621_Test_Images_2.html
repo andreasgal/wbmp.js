@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>Bug 182621 Test Images</title>
+  <script type="text/javascript" src="../wbmp.js"></script>
+  <script type="text/javascript">
+function run() {
+  var imgs = document.getElementsByTagName("img");
+  for (var n = 0; n < imgs.length; ++n)
+    WBMP.decode(imgs[n], imgs[n].src);
+}
+  </script>
+</head>
+<body onload="run()">
+This tests a basic WBMP image that has been corrupted with a binary
+editor.<br>
+The WBMP decoder currently only deals with a well-defined type 0 WBMP.<br>
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">Basic image<br>
+      </td>
+      <td style="vertical-align: top;"><img src="bmts.wbmp" title=""
+ alt=""><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Good image - width field is
+multi-byte and complete<br>
+      </td>
+      <td style="vertical-align: top;"><img src="multi_byte_width.wbmp"
+ title="" alt=""></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Good image - height field is
+multi-byte and complete</td>
+      <td style="vertical-align: top;"><img src="multi_byte_height.wbmp"
+ title="" alt=""></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Bad image - width field is
+multi-byte but incomplete </td>
+      <td style="vertical-align: top;"><img
+ src="err_type_fix_width_height_only.wbmp" title="" alt=""></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Bad image - height field is
+multi-byte but incomplete </td>
+      <td style="vertical-align: top;"><img
+ src="missing_image_data.wbmp" title="" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</body>
+</html>
